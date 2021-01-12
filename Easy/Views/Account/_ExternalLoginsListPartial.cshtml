@@ -1,0 +1,27 @@
+﻿@model Easy.Models.ExternalLoginListViewModel
+@using Microsoft.Owin.Security
+
+<h4>Використання іншого сервісу</h4>
+<hr />
+@{
+    var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
+    if (loginProviders.Count() == 0) {
+        <div>
+            <p>
+                Додаткові можливості реєстрації через зовнішні сервіси вимкнуті на цьому сайті.
+            </p>
+        </div>
+    }
+    else {
+        using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = Model.ReturnUrl })) {
+            @Html.AntiForgeryToken()
+            <div id="socialLoginList">
+                <p>
+                    @foreach (AuthenticationDescription p in loginProviders) {
+                        <button type="submit" class="btn btn-default" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Увійти за допомогою @p.Caption профілю">@p.AuthenticationType</button>
+                    }
+                </p>
+            </div>
+        }
+    }
+}

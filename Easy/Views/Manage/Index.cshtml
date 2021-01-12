@@ -1,0 +1,42 @@
+﻿@model Easy.Models.IndexViewModel
+@{
+    ViewBag.Title = "Профіль";
+}
+@{
+    Layout = "~/Views/Shared/LayoutReg_Log.cshtml";
+}
+<h2>@ViewBag.Title.</h2>
+
+<p class="text-success">@ViewBag.StatusMessage</p>
+<div>
+    <h4>Зміна Вашого профілю</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Пароль:</dt>
+        <dd>
+            [
+            @if (Model.HasPassword)
+            {
+                @Html.ActionLink("Змінити Ваш пароль", "ChangePassword")
+            }
+            else
+            {
+                @Html.ActionLink("Встановити пароль", "SetPassword")
+            }
+            ]
+        </dd>
+        <dt>Логіни:</dt>
+        <dd>
+            @Model.Logins.Count [
+            @Html.ActionLink("Огляд логінів", "ManageLogins") ]
+        </dd>
+
+        <dt>Дво-факторна авторизація:</dt>
+        <dd>
+            <p>
+                Дво-факторна авторизація не налаштована на цьому сайті.
+            </p>
+
+        </dd>
+    </dl>
+</div>

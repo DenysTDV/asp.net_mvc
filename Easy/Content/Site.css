@@ -1,0 +1,27 @@
+﻿body {
+    font-family: cursive, 'Lucida Sans Unicode', Arial, sans-serif;
+    font-size: 14pt;
+}
+
+.body-content {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+
+dl-horizontal dt {
+    white-space: normal;
+}
+a:hover{
+    color: red;
+}
+h2 {
+    margin-top: 50px;
+}
+footer{
+    margin-top: 550px;
+}
+nabar-brand{
+    font-size: 18pt;
+    padding: 20px;
+}
